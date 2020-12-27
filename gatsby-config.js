@@ -3,8 +3,18 @@ module.exports = {
     title: "bluebracket",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-scss-typescript",
+      options: {
+        sassLoaderOptions: {
+          includePaths: ["src/styles"],
+          cssLoaderOptions: {
+            camelCase: true,
+          },
+        },
+      },
+    },
     "gatsby-plugin-netlify-cms",
-    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {

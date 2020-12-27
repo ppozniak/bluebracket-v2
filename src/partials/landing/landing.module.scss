@@ -1,0 +1,136 @@
+@import 'helpers';
+
+.landing {
+  $bgOpacity: .9;
+  position: relative;
+  background: linear-gradient(to bottom, rgba($pastel--d, $bgOpacity), rgba($pastel, $bgOpacity)),
+              url(./assets/bg.jpg);
+  min-height: 100vh;
+  min-height: calc(100vh - 1.9em);
+  display: flex;
+  align-items: center;
+  @include from-portrait() {
+    padding: 0;
+  }
+}
+
+.landing-wrapper {
+  @include from-landscape() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.header {
+  text-shadow: 1px 1px 3px $softshadow;
+  letter-spacing: 2px;
+  line-height: 1.25;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex: 1 5 auto;
+  @include from-landscape() {
+    margin-right: 5rem;
+    flex: 0;
+  }
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: .3rem;
+  max-width: 20rem;
+  animation: 5s slowSwing 1.5s infinite linear;
+  transition: all 1.5s ease-in-out;
+
+  img {
+    border-radius: 50%;
+  }
+
+  // Avatar's border
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 0 12px 3px rgba($softshadow, .7), 1px 1px 0 1px $blue--d, 1px -1px 0 2px $pastel--d, 0 0 24px 8px $softshadow;
+    border-radius: 50%;
+    border: 1px solid $pastel--d;
+  }
+}
+
+.scroll-past-nav {
+  .avatar {
+    transform: rotate(360deg);
+    animation: none;
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 100%;
+}
+
+// Patryk poniak
+.heading-text {
+  flex: 0;
+}
+
+.bracket {
+  line-height: 0;
+  padding-left: .5rem;
+  padding-top: 1.4rem;
+  &:after {
+    content: "{";
+    font-size: 7.4rem;
+    font-weight: normal;
+    color: $blue;
+  }
+}
+
+// Front-end developer
+.sub-text {
+  white-space: nowrap;
+  margin-top: .5rem;
+  font-size: 1.3rem;
+  font-weight: 100;
+  @include from-portrait() {
+    margin-top: 1rem;
+    font-size: 1.7rem;
+  }
+}
+
+.about {
+  padding: 1.5rem 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid $blue;
+  font-size: 1rem;
+  font-weight: 100;
+  @include from-landscape() {
+    border: none;
+  }
+}
+
+.about-header {
+  font-size: 1.45rem;
+  font-weight: 300;
+  @include from-landscape {
+    margin-bottom: .4rem;
+    border-bottom: 2px solid $blue;
+    padding-bottom: .4rem;
+  }
+}
+
+.about-text {
+  max-width: 42rem;
+  @include from-landscape() {
+    max-width: 400px;
+  }
+}

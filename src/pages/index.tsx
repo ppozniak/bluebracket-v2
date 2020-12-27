@@ -1,12 +1,14 @@
-import * as React from "react"
+import * as React from "react";
+import Landing from "../partials/Landing";
+import "../styles/global.scss";
 
 const IndexPage = () => {
   return (
     <main>
       <title>Home Page</title>
-      <h1>This will be a bluebracket site</h1>
+      <Landing />
     </main>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

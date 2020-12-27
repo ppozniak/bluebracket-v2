@@ -1,0 +1,52 @@
+@import 'helpers';
+
+.container {
+  width: 80%;
+  max-width: 69rem;
+  margin: 0 auto;
+}
+
+// Misc settings
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+img {
+  max-width: 100%;
+}
+
+video {
+  max-width: 100%;
+}
+
+// Links
+.link--orange {
+  color: $orange;
+  &:hover {
+    color: $orange--d;
+  }
+}
+
+.link--white {
+  color: #fff;
+  &:hover {
+    color: $gray;
+  }
+}
+
+.external {
+  &:after {
+    content: "\e90f";
+    vertical-align: super;
+    font-family: icomoon;
+    font-size: .6rem;
+    margin-left: .1rem;
+  }
+}
