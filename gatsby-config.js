@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "bluebracket",
@@ -14,7 +18,6 @@ module.exports = {
         },
       },
     },
-    "gatsby-plugin-netlify-cms",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -27,6 +30,13 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
+      },
+    },
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     "gatsby-plugin-mdx",
