@@ -1,10 +1,11 @@
-import * as React from "react";
+import React from "react";
 import avatar from "./assets/some_handsome_guy.jpg";
-import * as styles from "./landing.module.scss";
+import styles from "./landing.module.scss";
+import sharedStyles from "../../styles/shared.module.scss";
 
 const Landing = () => (
   <section className={styles.landing} id="about">
-    <div className="container">
+    <div className={sharedStyles.container}>
       <div className={styles.landingWrapper}>
         <div className={styles.header}>
           <div className={styles.avatar}>
@@ -17,9 +18,9 @@ const Landing = () => (
           <h2 className={styles.subText}>Front-End Developer</h2>
         </div>
 
-        <article className="about">
-          <h2 className="about__header">Hello there!</h2>
-          <div className="about__text">
+        <article className={styles.about}>
+          <h2 className={styles.aboutHeader}>Hello there!</h2>
+          <div className={styles.aboutText}>
             <p>
               I am young and ambitious web developer from Poland, based in
               London. Programming is my passion since childhood. I&apos;ve took
@@ -33,6 +34,7 @@ const Landing = () => (
             <p>
               As a hobby I really like to develop games in Unity. I&apos;m a big
               fan of heavy music. Also I&apos;m a father of{" "}
+              {/* @TODO: Inline code styles */}
               <code
                 id="inline-code-birthday"
                 className="inline-code inline-code--interactive"

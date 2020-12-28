@@ -1,13 +1,14 @@
 $base-font: 16px;
-@function Em($px) {
+
+@function em($px) {
   @return ($px/$base-font) * 1em;
 }
 
-$mobile: Em(599px);
-$portrait: Em(600px);
-$landscape: Em(900px);
-$desktop: Em(1200px);
-$desktop-wide: Em(1800px);
+$mobile: em(599px);
+$portrait: em(600px);
+$landscape: em(900px);
+$desktop: em(1200px);
+$desktop-wide: em(1800px);
 
 @mixin to-mobile() {
   @media (max-width: $mobile) { @content; }
@@ -26,7 +27,7 @@ $desktop-wide: Em(1800px);
 }
 
 %list-reset {
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  list-style-type: none;
 }

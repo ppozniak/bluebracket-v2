@@ -1,22 +1,47 @@
 @import 'helpers';
+@import 'animations';
 
-.container {
-  width: 80%;
-  max-width: 69rem;
-  margin: 0 auto;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-// Misc settings
-.sr-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
+html {
+  box-sizing: border-box;
+  font-size: calc(0.6vh + 0.85em);
+}
+
+$basefonts: 'Ubuntu', 'Helvetica', 'Arial';
+
+body {
+  background-color: $almostblack;
+  color: $gray--l;
+  font-family: $basefonts;
+  line-height: $line-height;
+  margin: 0;
   padding: 0;
-  position: absolute;
-  width: 1px;
 }
+
+// Basic typography
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.4rem; }
+
+h4,
+h5 { font-size: 1.25rem; }
+
+p { margin: 0; }
+p + p { margin-top: 1rem; }
 
 img {
   max-width: 100%;
@@ -26,27 +51,12 @@ video {
   max-width: 100%;
 }
 
-// Links
-.link--orange {
-  color: $orange;
-  &:hover {
-    color: $orange--d;
-  }
-}
+a {
+  color: $blue;
+  text-decoration: none;
+  transition: color 0.25s;
 
-.link--white {
-  color: #fff;
   &:hover {
-    color: $gray;
-  }
-}
-
-.external {
-  &:after {
-    content: "\e90f";
-    vertical-align: super;
-    font-family: icomoon;
-    font-size: .6rem;
-    margin-left: .1rem;
+    color: $blue--d;
   }
 }

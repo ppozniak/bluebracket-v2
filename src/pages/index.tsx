@@ -1,6 +1,9 @@
-import * as React from "react";
-import Landing from "../partials/Landing";
+import React from "react";
+
+import "@fontsource/ubuntu";
 import "../styles/global.scss";
+
+import Landing from "../partials/Landing";
 
 const IndexPage = () => {
   return (

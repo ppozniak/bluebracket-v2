@@ -1,0 +1,80 @@
+@import 'helpers';
+
+.footer {
+  background-color: $almostblack;
+  bottom: 0;
+  font-size: 0.8rem;
+  font-weight: 100;
+  left: 0;
+  padding: 2.3rem 2.5rem;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  z-index: -1;
+
+  p {
+    margin: 0;
+  }
+}
+
+.footer-content {
+  @include from-portrait() {
+    margin: 0 auto;
+    max-width: 50%;
+  }
+}
+
+.bracket::before {
+  bottom: 50%;
+  color: $blue;
+  content: '}';
+  font-size: 4.5rem;
+  left: 5%;
+  position: absolute;
+  transform: translateY(50%);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 69rem;
+  width: 80%;
+}
+
+// Misc settings
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Links
+.link--orange {
+  color: $orange;
+
+  &:hover {
+    color: $orange--d;
+  }
+}
+
+.link--white {
+  color: #fff;
+
+  &:hover {
+    color: $gray;
+  }
+}
+
+.external {
+  &::after {
+    content: '\e90f';
+    // font-family: 'icomoon';
+    font-size: 0.6rem;
+    margin-left: 0.1rem;
+    vertical-align: super;
+  }
+}

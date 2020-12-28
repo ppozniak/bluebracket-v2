@@ -1,14 +1,18 @@
 @import 'helpers';
+@import 'animations';
 
 .landing {
-  $bgOpacity: .9;
-  position: relative;
-  background: linear-gradient(to bottom, rgba($pastel--d, $bgOpacity), rgba($pastel, $bgOpacity)),
-              url(./assets/bg.jpg);
+  $bg-opacity: 0.9;
+
+  align-items: center;
+  background:
+    linear-gradient(to bottom, rgba($pastel--d, $bg-opacity), rgba($pastel, $bg-opacity)),
+    url('./assets/bg.jpg');
+  display: flex;
   min-height: 100vh;
   min-height: calc(100vh - 1.9em);
-  display: flex;
-  align-items: center;
+  position: relative;
+
   @include from-portrait() {
     padding: 0;
   }
@@ -16,34 +20,35 @@
 
 .landing-wrapper {
   @include from-landscape() {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
   }
 }
 
 .header {
-  text-shadow: 1px 1px 3px $softshadow;
+  align-items: center;
+  display: flex;
+  flex: 1 5 auto;
+  flex-wrap: wrap;
+  justify-content: center;
   letter-spacing: 2px;
   line-height: 1.25;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  flex: 1 5 auto;
+  text-shadow: 1px 1px 3px $softshadow;
+
   @include from-landscape() {
-    margin-right: 5rem;
     flex: 0;
+    margin-right: 5rem;
   }
 }
 
 .avatar {
-  position: relative;
+  animation: slowSwing 5s 1.5s infinite linear;
   display: inline-block;
+  margin-bottom: 0.3rem;
   margin-top: 1rem;
-  margin-bottom: .3rem;
   max-width: 20rem;
-  animation: 5s slowSwing 1.5s infinite linear;
+  position: relative;
   transition: all 1.5s ease-in-out;
 
   img {
@@ -51,31 +56,31 @@
   }
 
   // Avatar's border
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 7px;
-    left: 0;
-    right: 0;
-    box-shadow: inset 0 0 12px 3px rgba($softshadow, .7), 1px 1px 0 1px $blue--d, 1px -1px 0 2px $pastel--d, 0 0 24px 8px $softshadow;
-    border-radius: 50%;
+  &::before {
     border: 1px solid $pastel--d;
+    border-radius: 50%;
+    bottom: 7px;
+    box-shadow: inset 0 0 12px 3px rgba($softshadow, 0.7), 1px 1px 0 1px $blue--d, 1px -1px 0 2px $pastel--d, 0 0 24px 8px $softshadow;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
 .scroll-past-nav {
   .avatar {
-    transform: rotate(360deg);
     animation: none;
+    transform: rotate(360deg);
   }
 }
 
 .heading {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-basis: 100%;
+  justify-content: center;
 }
 
 // Patryk poniak
@@ -85,51 +90,56 @@
 
 .bracket {
   line-height: 0;
-  padding-left: .5rem;
+  padding-left: 0.5rem;
   padding-top: 1.4rem;
-  &:after {
-    content: "{";
+
+  &::after {
+    color: $blue;
+    content: '{';
     font-size: 7.4rem;
     font-weight: normal;
-    color: $blue;
   }
 }
 
 // Front-end developer
 .sub-text {
-  white-space: nowrap;
-  margin-top: .5rem;
   font-size: 1.3rem;
   font-weight: 100;
+  margin-top: 0.5rem;
+  white-space: nowrap;
+
   @include from-portrait() {
-    margin-top: 1rem;
     font-size: 1.7rem;
+    margin-top: 1rem;
   }
 }
 
 .about {
-  padding: 1.5rem 0;
-  margin-top: 1.5rem;
   border-top: 1px solid $blue;
   font-size: 1rem;
   font-weight: 100;
+  margin-top: 1.5rem;
+  padding: 1.5rem 0;
+
   @include from-landscape() {
-    border: none;
+    border: 0;
   }
 }
 
 .about-header {
   font-size: 1.45rem;
   font-weight: 300;
+
   @include from-landscape {
-    margin-bottom: .4rem;
     border-bottom: 2px solid $blue;
-    padding-bottom: .4rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
   }
 }
 
 .about-text {
   max-width: 42rem;
+
   @include from-landscape() {
     max-width: 400px;
   }
