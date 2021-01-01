@@ -4,9 +4,11 @@ import "@fontsource/ubuntu";
 import "../styles/global.scss";
 
 import Landing from "../partials/Landing";
+import Skills from "../partials/Skills";
 
 export interface DataClass {
   allContentfulAbout: AllContentfulAbout;
+  allContentfulSkills: any;
 }
 
 export interface AllContentfulAbout {
@@ -33,10 +35,13 @@ const IndexPage = ({ data }: { data: DataClass }) => {
     greeting,
     jobTitle,
   } = data.allContentfulAbout.edges[0].node;
+
+  const skills = data.allContentfulSkills.nodes;
   return (
     <main>
       <title>Home Page</title>
       <Landing body={body} greeting={greeting} jobTitle={jobTitle} />
+      <Skills skillsGroups={skills} />
     </main>
   );
 };
@@ -51,6 +56,17 @@ export const pageQuery = graphql`
           }
           jobTitle
           greeting
+        }
+      }
+    }
+
+    allContentfulSkills {
+      nodes {
+        name
+        skills {
+          name
+          title
+          iconName
         }
       }
     }

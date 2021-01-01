@@ -78,3 +78,153 @@
     vertical-align: super;
   }
 }
+
+.scroll-top {
+  bottom: 1rem;
+  box-shadow: 0 0 12px rgba($softshadow, 0.3);
+  position: fixed;
+  right: 1rem;
+  transform: translateY(150%);
+  z-index: 10;
+}
+
+.scroll-past-nav .scroll-top {
+  transform: translateY(0);
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+.section {
+  padding: 3.3rem 0;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.section-header {
+  margin-bottom: 2.6rem;
+  text-align: center;
+}
+
+// Button
+.btn {
+  background-color: $pastel;
+  border: 3px solid $gray;
+  color: $blue--l;
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem 1.2rem;
+  text-align: center;
+  transition: all 0.45s;
+
+  &:hover,
+  &:focus {
+    background-color: $pastel--d;
+    border-color: $pastel;
+    border-radius: 4px;
+    transform: scale(0.98);
+  }
+}
+
+.btn--circle {
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 3rem;
+  text-align: center;
+  transition: color 0.45s, background-color 0.45s, transform 0.25s ease-out;
+  width: 3rem;
+}
+
+.btn--blue {
+  background-color: $blue;
+  color: #fff;
+
+  &:hover {
+    background-color: $blue--d;
+    color: #fff;
+  }
+}
+
+.btn--green {
+  background-color: $green;
+  color: $gray--l;
+
+  &:hover {
+    background-color: $green--d;
+    color: $gray--d;
+  }
+}
+
+
+// BlockQuote
+.quote {
+  color: $gold;
+  font-size: 1.3rem;
+  letter-spacing: 0.125rem;
+  margin: 0.4rem;
+  text-align: center;
+
+
+  p {
+    &::before,
+    &::after {
+      content: '"';
+    }
+  }
+}
+
+.quote-author {
+  float: right;
+  font-size: 0.9rem;
+  font-style: italic;
+
+  &::before {
+    content: '- ';
+  }
+
+}
+
+.table {
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  width: 100%;
+
+  td,
+  th { padding: 0.6rem; }
+}
+
+.table--pastel {
+  th {
+    color: $green--d;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  tr {
+    background-color: $pastel--d;
+    border-bottom: 1px solid $darkpastel;
+  }
+
+  tr:nth-child(even) {
+    background-color: $darkpastel;
+  }
+}
+
+.underlined {
+  &::after {
+    background: linear-gradient(to right, currentColor, rgba(255, 255, 255, 0));
+    content: '';
+    display: block;
+    height: 1px;
+    opacity: 0.5;
+    width: 100%;
+    @include from-portrait() {
+      background: linear-gradient(to right, currentColor, rgba(255, 255, 255, 0) 40%);
+    }
+  }
+}
+

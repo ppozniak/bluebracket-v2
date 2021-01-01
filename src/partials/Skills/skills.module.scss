@@ -1,0 +1,56 @@
+@import 'helpers';
+
+.sub-heading {
+  font-size: $size-small;
+  font-weight: normal;
+}
+
+.skills-section {
+  background: #fff url('./assets/gears.svg') no-repeat right bottom/70%;
+  color: $pastel--d;
+  @include from-portrait() {
+    background-size: 25%;
+  }
+}
+
+.skills-group {
+  @extend %list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  @include from-portrait() {
+    justify-content: flex-start;
+  }
+}
+
+.skill {
+  align-items: center;
+  cursor: default;
+  display: flex;
+  flex: 0 0 30%;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0;
+  @include from-portrait() {
+    flex-basis: 25%;
+  }
+  @include from-landscape() {
+    flex-basis: 15%;
+  }
+}
+
+.icon {
+  font-size: 3.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.name {
+  align-items: center;
+  color: $pastel--d;
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+}
