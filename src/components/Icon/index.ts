@@ -1,2 +1,2 @@
-export { default } from "./icon";
+export { default } from "./Icon";
 export { IconName } from "./Icon.types";
