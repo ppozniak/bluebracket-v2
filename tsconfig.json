@@ -30,7 +30,8 @@
     "lib": [
       "dom",
       "esnext"
-    ]
+    ],
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "./typings/*",
