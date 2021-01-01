@@ -1,0 +1,60 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-sass {
+  width: 0.892578125em;
+}
+
+.icon-node {
+  width: 0.771484375em;
+}
+
+.icon-gulp {
+  width: 0.44921875em;
+}
+
+.icon-external {
+  width: 0.75em;
+}
+
+.icon-person {
+  width: 0.5em;
+}
+
+.icon-facebook {
+  width: 0.5881428571428571em;
+}
+
+.icon-github {
+  width: 0.8571428571428571em;
+}
+
+.icon-web {
+  width: 0.8571428571428571em;
+}
+
+.icon-linkedin {
+  width: 0.8571428571428571em;
+}
+
+.icon-html {
+  width: 0.7857142857142857em;
+}
+
+.icon-wheelchair {
+  width: 0.8582857142857142em;
+}
