@@ -1,7 +1,7 @@
 import React from "react";
-import avatar from "./assets/some_handsome_guy.jpg";
+import sharedStyles from "styles/shared.module.scss";
 import styles from "./landing.module.scss";
-import sharedStyles from "../../styles/shared.module.scss";
+import avatar from "./assets/some_handsome_guy.jpg";
 
 type Props = {
   body: string;

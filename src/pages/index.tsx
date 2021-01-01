@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql } from "gatsby";
 import "@fontsource/ubuntu";
-import "../styles/global.scss";
+import "styles/global.scss";
 
-import Landing from "../partials/Landing";
-import Skills from "../partials/Skills";
+import Landing from "partials/Landing";
+import Skills from "partials/Skills";
 
 export interface DataClass {
   allContentfulAbout: AllContentfulAbout;

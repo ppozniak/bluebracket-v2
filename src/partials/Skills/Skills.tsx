@@ -1,12 +1,13 @@
 import React from "react";
 import className from "classnames";
+import sharedStyles from "styles/shared.module.scss";
 import styles from "./skills.module.scss";
-import sharedStyles from "../../styles/shared.module.scss";
+import Icon, { IconName } from "components/Icon";
 
 type Skill = {
   name: string;
   title?: string;
-  iconName: string;
+  iconName: IconName;
 };
 
 type SkillsGroup = {
@@ -35,10 +36,7 @@ const Skills = ({ skillsGroups }: Props) => (
           <ul className={styles.skillsGroup}>
             {skills.map(({ title, name, iconName }) => (
               <li key={name} className={styles.skill} title={title}>
-                <span
-                  className={className(`icon-${iconName}`, styles.icon)}
-                  aria-hidden="true"
-                ></span>
+                <Icon className={styles.icon} name={iconName} />
                 <span className={styles.skill}>{name}</span>
               </li>
             ))}

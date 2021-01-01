@@ -8,6 +8,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: "gatsby-plugin-svgr",
+      options: {
+        icon: true, // @TODO: Make it only for icomoon folder.
+      },
+    },
+    {
       resolve: "gatsby-plugin-scss-typescript",
       options: {
         sassLoaderOptions: {
@@ -29,7 +35,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/favicon.png",
+        icon: "src/assets/images/favicon.png",
       },
     },
     {
@@ -46,7 +52,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
-        path: "./src/images/",
+        path: "./src/assets/images/",
       },
       __key: "images",
     },
