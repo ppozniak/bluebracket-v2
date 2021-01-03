@@ -5,6 +5,7 @@ import "styles/global.scss";
 
 import Landing from "partials/Landing";
 import Skills from "partials/Skills";
+import Projects from "partials/Projects";
 
 export interface DataClass {
   allContentfulAbout: AllContentfulAbout;
@@ -42,6 +43,19 @@ const IndexPage = ({ data }: { data: DataClass }) => {
       <title>Home Page</title>
       <Landing body={body} greeting={greeting} jobTitle={jobTitle} />
       <Skills skillsGroups={skills} />
+      <Projects
+        projects={[
+          {
+            name: "Leverage",
+            description: "Lorem ipsum",
+            thumbnail: "image.png",
+            tags: ["react", "js"],
+            liveUrl: "https://bluebracket.net",
+            githubUrl: "https://bluebracket.net",
+            popupId: "#",
+          },
+        ]}
+      />
     </main>
   );
 };
