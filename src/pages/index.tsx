@@ -47,7 +47,8 @@ const IndexPage = ({ data }: { data: DataClass }) => {
         projects={[
           {
             name: "Leverage",
-            description: "Lorem ipsum",
+            description:
+              "My first serious project in the career. Simple big website, which taught me a lot in a hurtful way.",
             thumbnail: "image.png",
             tags: ["react", "js"],
             liveUrl: "https://bluebracket.net",

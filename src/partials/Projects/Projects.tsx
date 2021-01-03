@@ -1,6 +1,9 @@
 import React from "react";
 import { Project, Category } from "./Projects.types";
 import Icon, { IconName } from "components/Icon";
+import styles from "./Projects.module.scss";
+import sharedStyles from "styles/shared.module.scss";
+import classNames from "classnames";
 
 const tagIconMapping: Record<Category, IconName> = {
   game: "pacman",
@@ -11,16 +14,30 @@ const tagIconMapping: Record<Category, IconName> = {
   wp: "wordpress",
 };
 
+const tagTextMapping: Record<Category, string> = {
+  game: "Game",
+  js: "JavaScript",
+  react: "React.js",
+  vue: "Vue.js",
+  web: "Web",
+  wp: "Wordpress",
+};
+
 const ProjectTag = ({
   iconName,
   text,
+  tag,
 }: {
   iconName: IconName;
   text: string;
+  tag: Category;
 }) => (
-  <li className="project__tag tag--{classNameName}" data-tooltip={text}>
+  <li
+    className={classNames(styles.projectTag, styles[tag])}
+    data-tooltip={text}
+  >
     <Icon name={iconName} />
-    <span className="sr-only">{text}</span>
+    <span className={sharedStyles.srOnly}>{text}</span>
   </li>
 );
 
@@ -29,20 +46,23 @@ const ProjectLink = ({
   href,
   iconName,
   text,
+  className,
 }: {
   href: string;
   iconName: IconName;
   text: string;
+  className?: string;
 }) => (
-  <li className="project__link-item">
+  <li className={styles.projectLinkItem}>
     <a
-      className="project__link project__tag tag--{classNameName}"
+      className={classNames(styles.projectLink, styles.projectTag, className)}
+      data-tooltip={text}
       href={href}
       target="_blank"
       rel="noopener noreferrer"
     >
       <Icon name={iconName} />
-      <span className="sr-only">{text}</span>
+      <span className={sharedStyles.srOnly}>{text}</span>
     </a>
   </li>
 );
@@ -56,36 +76,50 @@ const ProjectCard = ({
   popupId,
   thumbnail,
 }: Project) => (
-  <li className="project" style={{ backgroundImage: `url('${thumbnail}')` }}>
-    <div className="project__content">
-      <div className="project__header">
-        <h3 id="{id}__title" className="project__title">
-          {name}
-        </h3>
-        <ul className="project__tags">
-          {/* @TODO: Mapping */}
+  <li
+    className={styles.projectCard}
+    style={{ backgroundImage: `url('${thumbnail}')` }}
+  >
+    <div className={styles.projectContent}>
+      <div className={styles.projectHeader}>
+        <h3 className={styles.projectTitle}>{name}</h3>
+        <ul className={styles.projectTags}>
           {tags.map((tag) => (
-            <ProjectTag text={tag} iconName={tagIconMapping[tag]} key={tag} />
+            <ProjectTag
+              tag={tag}
+              text={tagTextMapping[tag]}
+              iconName={tagIconMapping[tag]}
+              key={tag}
+            />
           ))}
         </ul>
       </div>
-      <p className="project__desc" id="{id}__desc">
-        {description}
-      </p>
-      <ul className="project__links">
+      <p className={styles.projectDescription}>{description}</p>
+      <ul className={styles.projectLinks}>
         {githubUrl && (
           <ProjectLink
             text="View on GitHub"
             iconName="github"
             href={githubUrl}
+            className={styles.github}
           />
         )}
         {liveUrl && (
-          <ProjectLink text="See live" iconName="link" href={liveUrl} />
+          <ProjectLink
+            text="See live"
+            iconName="link"
+            href={liveUrl}
+            className={styles.live}
+          />
         )}
         {/* @TODO: Probably there will be a button for a popup */}
         {popupId && (
-          <ProjectLink text="More info" iconName="info" href={popupId} />
+          <ProjectLink
+            text="More info"
+            iconName="info"
+            href={popupId}
+            className={styles.info}
+          />
         )}
       </ul>
     </div>
@@ -97,13 +131,16 @@ type Props = {
 };
 
 const Projects = ({ projects }: Props) => (
-  <section className="portfolio section" id="portfolio">
-    <div className="container">
-      <header className="section__header">
-        <h2 className="section__heading">Things I&apos;ve worked on</h2>
+  <section
+    className={classNames(styles.projectsSection, sharedStyles.section)}
+    id="portfolio"
+  >
+    <div className={sharedStyles.container}>
+      <header className={sharedStyles.sectionHeader}>
+        <h2>Things I&apos;ve worked on</h2>
       </header>
-      <div className="projects">
-        <ul id="projects__list" className="projects__list">
+      <div>
+        <ul className={styles.projectsList}>
           {projects.map((project) => (
             <ProjectCard key={project.name} {...project} />
           ))}

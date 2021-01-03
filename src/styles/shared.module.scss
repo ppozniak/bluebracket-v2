@@ -118,14 +118,14 @@
   display: block;
   padding: 0.5rem 1.2rem;
   text-align: center;
-  transition: all 0.45s;
+  transition-duration: 0.45s;
+
 
   &:hover,
   &:focus {
     background-color: $pastel--d;
     border-color: $pastel;
     border-radius: 4px;
-    transform: scale(0.98);
   }
 }
 
