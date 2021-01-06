@@ -228,3 +228,9 @@
   }
 }
 
+$ani-dur: 0.3s;
+
+.fade-in {
+  animation: fadeIn $ani-dur ease-out;
+}
+

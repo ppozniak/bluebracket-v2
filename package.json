@@ -33,11 +33,13 @@
     "gatsby-transformer-sharp": "2.9.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-helmet": "6.1.0"
+    "react-helmet": "6.1.0",
+    "react-modal": "3.12.1"
   },
   "devDependencies": {
     "@svgr/webpack": "5.5.0",
     "@types/classnames": "2.2.11",
+    "@types/react-modal": "3.10.6",
     "@typescript-eslint/eslint-plugin": "4.11.0",
     "@typescript-eslint/parser": "4.11.0",
     "eslint": "7.16.0",

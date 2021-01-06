@@ -19,3 +19,4 @@ export const quoteAuthor: string;
 export const table: string;
 export const tablePastel: string;
 export const underlined: string;
+export const fadeIn: string;

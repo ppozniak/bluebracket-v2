@@ -1,0 +1,171 @@
+@import 'helpers';
+
+.overlay {
+  align-items: center;
+  background-color: rgba(#000, 0.75);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+$padding: 1.3rem;
+
+.modal {
+  align-items: center;
+  background-color: rgba($darkpastel, 0.97);
+  border: 1px solid $pastel--d;
+  color: $gray--l;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  outline: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: $padding 0;
+  width: 100%;
+  @include from-landscape() {
+    overflow: visible;
+    position: relative;
+  }
+  @include from-desktop() {
+    height: 80%;
+    width: 80%;
+  }
+}
+
+.modal-loader {
+  $size: 3.3rem;
+  align-items: center;
+  color: $gray--l;
+  display: flex;
+  fill: currentColor;
+  flex: 1 0 100%;
+  font-size: $size;
+  justify-content: center;
+
+  &::before,
+  &::after {
+    animation: 1.2s ease-in-out infinite alternate forwards;
+    color: $blue;
+    font-size: 4rem;
+    margin-top: -0.35rem;
+  }
+
+  &::before {
+    animation-name: loadingBracketLeft;
+    content: '{';
+    margin-right: 0.3rem;
+  }
+
+  &::after {
+    animation-name: loadingBracketRight;
+    content: '}';
+    margin-left: 0.3rem;
+  }
+}
+
+.modal-loader--image {
+  font-size: 2.6rem;
+
+  &::before,
+  &::after {
+    font-size: 3.3rem;
+  }
+}
+
+.modal-close {
+  $size: 2.4rem;
+  align-items: center;
+  background-color: $pastel--d;
+  border: 0;
+  border-radius: 0 0 0 5px;
+  box-shadow: 0 0 6px 1px $overlay;
+  color: $darkgray;
+  cursor: pointer;
+  display: flex;
+  fill: currentColor;
+  font-size: 1rem;
+  height: $size;
+  justify-content: center;
+  opacity: 1;
+  position: fixed;
+  right: 0.5rem;
+  top: 0.5rem;
+  transition: 0.25s ease;
+  width: $size;
+  @include from-desktop() {
+    border-radius: 50%;
+    opacity: 1;
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    z-index: 1;
+  }
+
+  &:hover,
+  &:focus {
+    color: $blue;
+    outline: none;
+  }
+}
+
+$distance: 1rem;
+@keyframes loadingBracketLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-$distance); }
+}
+@keyframes loadingBracketRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX($distance); }
+}
+
+.modal-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  @include from-landscape() {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+  @include from-desktop() {
+    max-height: 80vh;
+  }
+
+  > .grid {
+    overflow-y: auto;
+  }
+}
+
+.modal-content-style {
+  p img {
+    margin: 0.9rem 0;
+  }
+
+  h4 {
+    margin-top: 1rem;
+  }
+}
+
+.modal-scrollable {
+  display: flex;
+  @include from-landscape() {
+    max-height: calc(100vh - #{$padding * 2});
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  @include from-desktop() {
+    max-height: calc(80vh - #{$padding * 2});
+  }
+}
+
+.modal-media-link {
+  margin: 1rem auto 0;
+}

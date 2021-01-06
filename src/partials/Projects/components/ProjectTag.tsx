@@ -1,0 +1,26 @@
+import React from "react";
+import classNames from "classnames";
+import Icon, { IconName } from "components/Icon";
+import styles from "../Projects.module.scss";
+import sharedStyles from "styles/shared.module.scss";
+import { Category } from "../Projects.types";
+
+const ProjectTag = ({
+  iconName,
+  text,
+  tag,
+}: {
+  iconName: IconName;
+  text: string;
+  tag: Category;
+}) => (
+  <li
+    className={classNames(styles.projectTag, styles[tag])}
+    data-tooltip={text}
+  >
+    <Icon name={iconName} />
+    <span className={sharedStyles.srOnly}>{text}</span>
+  </li>
+);
+
+export default ProjectTag;

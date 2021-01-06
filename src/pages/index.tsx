@@ -2,6 +2,10 @@ import React from "react";
 import { graphql } from "gatsby";
 import "@fontsource/ubuntu";
 import "styles/global.scss";
+import Modal from "react-modal";
+
+// http://reactcommunity.org/react-modal/accessibility/#app-element
+Modal.setAppElement("#___gatsby");
 
 import Landing from "partials/Landing";
 import Skills from "partials/Skills";
