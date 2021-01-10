@@ -12,10 +12,9 @@ type Props = {
 
 const Projects = ({ projects }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeProject, setActiveProject] = useState<String>();
 
-  const toggleModal = () => {
-    setIsModalOpen((isModalOpen) => !isModalOpen);
-  };
+  const activeProjectData = projects.find(({ name }) => name === activeProject);
 
   return (
     <section
@@ -32,7 +31,10 @@ const Projects = ({ projects }: Props) => {
               <ProjectCard
                 key={project.name}
                 {...project}
-                onInfoClick={toggleModal}
+                onInfoClick={() => {
+                  setActiveProject(project.name);
+                  setIsModalOpen(true);
+                }}
               />
             ))}
           </ul>
@@ -40,8 +42,12 @@ const Projects = ({ projects }: Props) => {
       </div>
 
       <ProjectInfoModal
-        closeModal={() => setIsModalOpen(false)}
-        isOpen={isModalOpen}
+        project={activeProjectData}
+        closeModal={() => {
+          setIsModalOpen(false);
+          setActiveProject(undefined);
+        }}
+        isOpen={isModalOpen && !!activeProjectData}
       />
     </section>
   );

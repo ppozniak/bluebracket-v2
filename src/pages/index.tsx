@@ -13,7 +13,8 @@ import Projects from "partials/Projects";
 
 export interface DataClass {
   allContentfulAbout: AllContentfulAbout;
-  allContentfulSkills: any;
+  allContentfulSkills: any; // @TODO: Give types
+  allContentfulProject: any; // @TODO: ^
 }
 
 export interface AllContentfulAbout {
@@ -42,6 +43,7 @@ const IndexPage = ({ data }: { data: DataClass }) => {
   } = data.allContentfulAbout.edges[0].node;
 
   const skills = data.allContentfulSkills.nodes;
+  const projects = data.allContentfulProject.nodes;
   return (
     <main>
       <title>Home Page</title>
@@ -49,6 +51,7 @@ const IndexPage = ({ data }: { data: DataClass }) => {
       <Skills skillsGroups={skills} />
       <Projects
         projects={[
+          ...projects,
           {
             name: "Leverage",
             description:
@@ -57,7 +60,6 @@ const IndexPage = ({ data }: { data: DataClass }) => {
             tags: ["react", "js"],
             liveUrl: "https://bluebracket.net",
             githubUrl: "https://bluebracket.net",
-            popupId: "#",
           },
         ]}
       />
@@ -86,6 +88,31 @@ export const pageQuery = graphql`
           name
           title
           iconName
+        }
+      }
+    }
+
+    allContentfulProject {
+      nodes {
+        description
+        githubUrl
+        name
+        table {
+          Period_of_time
+          Scope
+          Technologies
+          Type
+        }
+        tags
+        content {
+          raw
+        }
+        media {
+          file {
+            contentType
+            url
+            fileName
+          }
         }
       }
     }

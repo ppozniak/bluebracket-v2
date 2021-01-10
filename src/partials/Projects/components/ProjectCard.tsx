@@ -12,6 +12,7 @@ const tagIconMapping: Record<Category, IconName> = {
   vue: "vue",
   web: "web",
   wp: "wordpress",
+  node: "aws", // @TODO: Change this
 };
 
 const tagTextMapping: Record<Category, string> = {
@@ -21,6 +22,7 @@ const tagTextMapping: Record<Category, string> = {
   vue: "Vue.js",
   web: "Web",
   wp: "Wordpress",
+  node: "Node.js",
 };
 
 type Props = {
@@ -33,7 +35,6 @@ const ProjectCard = ({
   tags = [],
   githubUrl,
   liveUrl,
-  popupId,
   thumbnail,
   onInfoClick,
 }: Props) => (
@@ -73,8 +74,8 @@ const ProjectCard = ({
             className={styles.live}
           />
         )}
-        {/* @TODO: Probably there will be a button for a popup */}
-        {popupId && <ViewInfoButton onClick={onInfoClick} />}
+        {/* @TODO: Validate if content is in */}
+        <ViewInfoButton onClick={onInfoClick} />
       </ul>
     </div>
   </li>
