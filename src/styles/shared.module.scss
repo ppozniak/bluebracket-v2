@@ -69,16 +69,6 @@
   }
 }
 
-.external {
-  &::after {
-    content: '\e90f';
-    // font-family: 'icomoon';
-    font-size: 0.6rem;
-    margin-left: 0.1rem;
-    vertical-align: super;
-  }
-}
-
 .scroll-top {
   bottom: 1rem;
   box-shadow: 0 0 12px rgba($softshadow, 0.3);

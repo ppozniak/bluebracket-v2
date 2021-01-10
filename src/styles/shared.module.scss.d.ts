@@ -5,7 +5,6 @@ export const container: string;
 export const srOnly: string;
 export const linkOrange: string;
 export const linkWhite: string;
-export const external: string;
 export const scrollTop: string;
 export const scrollPastNav: string;
 export const section: string;

@@ -19,3 +19,4 @@ export const game: string;
 export const live: string;
 export const info: string;
 export const github: string;
+export const node: string;

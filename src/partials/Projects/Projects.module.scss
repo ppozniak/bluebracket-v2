@@ -97,6 +97,7 @@ $foreground: $blue;
 .project-tag {
   $size: 1.4rem;
   align-items: center;
+  border: 0;
   border-radius: 1px;
   display: flex;
   font-family: 'Ubuntu Mono', monospace;
@@ -110,10 +111,6 @@ $foreground: $blue;
   position: relative;
   text-align: center;
   width: $size;
-
-  svg {
-    fill: currentColor;
-  }
 
   // Tag tooltip
   &::before {
@@ -227,5 +224,11 @@ $foreground: $blue;
 .github,
 .github::before { 
   background-color: $gray--d;
+  color: #000; 
+}
+
+.node,
+.node::before { 
+  background-color: $contactgreen;
   color: #000; 
 }
