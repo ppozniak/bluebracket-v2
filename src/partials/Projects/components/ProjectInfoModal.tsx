@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import styles from "./ProjectInfoModal.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 import { Project } from "../Projects.types";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 type Props = {
   isOpen: boolean;
@@ -14,7 +15,7 @@ type Props = {
 
 const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
   if (!project) return null;
-  const { name, githubUrl, liveUrl } = project;
+  const { name, githubUrl, liveUrl, content } = project;
 
   return (
     <Modal
@@ -88,6 +89,7 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
               </table>
 
               {/* Content */}
+              {content && renderRichText(content)}
             </div>
           </div>
           <div className={styles.modalScrollable}>

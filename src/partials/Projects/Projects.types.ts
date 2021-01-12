@@ -1,3 +1,5 @@
+import { ContentfulRichTextGatsbyReference } from "gatsby-source-contentful/rich-text";
+
 export type Category = "web" | "js" | "wp" | "react" | "vue" | "game" | "node";
 
 export interface Project {
@@ -12,8 +14,9 @@ export interface Project {
   liveUrl?: string;
 }
 
-export interface Content {
+export interface Content extends ContentfulRichTextGatsbyReference {
   raw: string;
+  references: any;
 }
 
 export interface Media {
