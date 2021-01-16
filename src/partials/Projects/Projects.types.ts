@@ -20,7 +20,10 @@ export interface Content extends ContentfulRichTextGatsbyReference {
 }
 
 export interface Media {
-  file: File;
+  file?: File;
+  localFile: {
+    publicURL: string;
+  };
 }
 
 export interface File {

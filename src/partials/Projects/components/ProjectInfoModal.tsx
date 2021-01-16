@@ -13,10 +13,26 @@ type Props = {
   project?: Project;
 };
 
+const renderMedia = (publicURL: string) => {
+  const type = publicURL.split(".").pop();
+  switch (type) {
+    case "webm":
+      return (
+        <video autoPlay muted>
+          <source src={publicURL} type="video/webm" />
+        </video>
+      );
+    case "jpeg":
+    case "jpg":
+    case "png":
+      return <img src={publicURL} alt="" />;
+  }
+};
+
 const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
   if (!project) return null;
-  const { name, githubUrl, liveUrl, content } = project;
-
+  const { name, githubUrl, liveUrl, content, media } = project;
+  console.log(media);
   return (
     <Modal
       isOpen={isOpen}
@@ -40,10 +56,7 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
       <article className={classNames(styles.modalContent, sharedStyles.fadeIn)}>
         <div className={styles.columnsContainer}>
           <div
-            className={classNames(
-              styles.modalScrollable,
-              styles.modalContentStyle
-            )}
+            className={classNames(styles.modalColumn, styles.modalContentStyle)}
           >
             <div className={sharedStyles.container}>
               <h3>{name}</h3>
@@ -92,20 +105,20 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
               {content && renderRichText(content)}
             </div>
           </div>
-          <div className={styles.modalScrollable}>
+          <div className={styles.modalColumn}>
             {/* Media */}
-            {/* <a
-              className="hidden modal__media-link"
-              href="images/screenshots/leveraged.jpg"
-              title="Open image in new tab"
-              target="_blank"
-            >
-              <img
-                className="modal__media"
-                src="images/screenshots/leveraged.jpg"
-                alt=""
-              />
-            </a> */}
+            {media?.map(({ localFile: { publicURL } }) => (
+              <a
+                key={publicURL}
+                className={styles.modalMediaLink}
+                href={publicURL}
+                title="Open resource in new tab"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {renderMedia(publicURL)}
+              </a>
+            ))}
           </div>
         </div>
       </article>

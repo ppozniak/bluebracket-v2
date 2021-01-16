@@ -110,9 +110,10 @@ $distance: 1rem;
   }
 }
 
-.modal-scrollable {
+.modal-column {
   display: flex;
   @include from-landscape() {
+    flex-basis: 50%;
     max-height: calc(100vh - #{$padding * 2});
     overflow-x: hidden;
     overflow-y: auto;

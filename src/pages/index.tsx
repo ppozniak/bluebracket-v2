@@ -108,10 +108,8 @@ export const pageQuery = graphql`
           raw
         }
         media {
-          file {
-            contentType
-            url
-            fileName
+          localFile {
+            publicURL
           }
         }
       }
