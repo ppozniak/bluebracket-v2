@@ -1,8 +1,8 @@
 import React from "react";
 import classNames from "classnames";
-import { iconList } from "./iconList";
-import { IconName } from "./Icon.types";
-import styles from "./Icon.module.scss";
+import { iconList } from "./icon-list";
+import { IconName } from "./icon.types";
+import styles from "./icon.module.scss";
 
 type Props = {
   name: IconName;

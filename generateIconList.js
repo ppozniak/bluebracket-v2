@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 const ICONS_PATH = "./src/assets/icomoon/SVG";
-const PATH_TO_SAVE = "./src/components/Icon/iconList.tsx";
+const PATH_TO_SAVE = "./src/components/icon/icon-list.tsx";
 
 const iconPaths = fs.readdirSync(ICONS_PATH);
 const iconNames = [];
