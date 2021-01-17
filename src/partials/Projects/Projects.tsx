@@ -27,16 +27,19 @@ const Projects = ({ projects }: Props) => {
         </header>
         <div>
           <ul className={styles.projectsList}>
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.name}
-                {...project}
-                onInfoClick={() => {
-                  setActiveProject(project.name);
-                  setIsModalOpen(true);
-                }}
-              />
-            ))}
+            {projects.map(
+              (project) =>
+                project.name && (
+                  <ProjectCard
+                    key={project.name}
+                    {...project}
+                    onInfoClick={() => {
+                      setActiveProject(project.name);
+                      setIsModalOpen(true);
+                    }}
+                  />
+                )
+            )}
           </ul>
         </div>
       </div>

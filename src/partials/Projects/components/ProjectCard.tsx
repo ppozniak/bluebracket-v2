@@ -40,21 +40,23 @@ const ProjectCard = ({
 }: Props) => (
   <li
     className={styles.projectCard}
-    style={{ backgroundImage: `url('${thumbnail}')` }}
+    style={{ backgroundImage: thumbnail && `url('${thumbnail}')` }}
   >
     <div className={styles.projectContent}>
       <div className={styles.projectHeader}>
         <h3 className={styles.projectTitle}>{name}</h3>
-        <ul className={styles.projectTags}>
-          {tags.map((tag) => (
-            <ProjectTag
-              tag={tag}
-              text={tagTextMapping[tag]}
-              iconName={tagIconMapping[tag]}
-              key={tag}
-            />
-          ))}
-        </ul>
+        {tags?.length && (
+          <ul className={styles.projectTags}>
+            {tags.map((tag) => (
+              <ProjectTag
+                tag={tag}
+                text={tagTextMapping[tag]}
+                iconName={tagIconMapping[tag]}
+                key={tag}
+              />
+            ))}
+          </ul>
+        )}
       </div>
       <p className={styles.projectDescription}>{description}</p>
       <ul className={styles.projectLinks}>

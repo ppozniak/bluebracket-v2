@@ -31,8 +31,25 @@ const renderMedia = (publicURL: string) => {
 
 const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
   if (!project) return null;
-  const { name, githubUrl, liveUrl, content, media } = project;
-  console.log(media);
+  const {
+    name,
+    githubUrl,
+    liveUrl,
+    content,
+    media,
+    type,
+    scope,
+    timePeriod,
+    stack,
+  } = project;
+
+  const table = Object.entries({
+    "Period of time": timePeriod,
+    Type: type,
+    Scope: scope,
+    Stack: stack,
+  }).filter(([, value]) => !!value);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -62,7 +79,7 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
               <h3>{name}</h3>
 
               {/* Links */}
-              {/* @TODO: DRY */}
+              {/* @TODO: DRY - links */}
               <div className={styles.linksContainer}>
                 {liveUrl && (
                   <a
@@ -86,20 +103,24 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
                 )}
               </div>
 
-              <table
-                className={classNames(
-                  sharedStyles.table,
-                  sharedStyles.tablePastel
-                )}
-              >
-                {/* Table content */}
-                <tbody>
-                  <tr>
-                    <th>Type:</th>
-                    <td>Company project (Squiz)</td>
-                  </tr>
-                </tbody>
-              </table>
+              {/* Table */}
+              {!!table.length && (
+                <table
+                  className={classNames(
+                    sharedStyles.table,
+                    sharedStyles.tablePastel
+                  )}
+                >
+                  <tbody>
+                    {table.map(([key, value]) => (
+                      <tr key={key}>
+                        <th>{key}:</th>
+                        <td>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
 
               {/* Content */}
               {content && renderRichText(content)}

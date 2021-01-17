@@ -97,12 +97,10 @@ export const pageQuery = graphql`
         description
         githubUrl
         name
-        table {
-          Period_of_time
-          Scope
-          Technologies
-          Type
-        }
+        timePeriod
+        scope
+        stack
+        type
         tags
         content {
           raw
