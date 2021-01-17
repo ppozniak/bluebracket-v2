@@ -37,6 +37,8 @@ const ProjectCard = ({
   liveUrl,
   thumbnail,
   onInfoClick,
+  content,
+  media,
 }: Props) => (
   <li
     className={styles.projectCard}
@@ -76,8 +78,7 @@ const ProjectCard = ({
             className={styles.live}
           />
         )}
-        {/* @TODO: Validate if content is in */}
-        <ViewInfoButton onClick={onInfoClick} />
+        {(!!content || !!media) && <ViewInfoButton onClick={onInfoClick} />}
       </ul>
     </div>
   </li>

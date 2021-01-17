@@ -4,7 +4,6 @@ import Icon, { IconName } from "components/Icon";
 import styles from "../Projects.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 
-// @TODO: Maybe can be unified with ProjectTag?
 const ProjectLink = ({
   href,
   iconName,
@@ -33,7 +32,6 @@ const ProjectLink = ({
 export const ViewInfoButton = ({
   onClick,
 }: {
-  // onClick(event: React.MouseEvent<HTMLButtonElement>): void;
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }) => (
   <li className={styles.projectLinkItem}>

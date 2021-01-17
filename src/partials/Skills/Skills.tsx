@@ -2,18 +2,8 @@ import React from "react";
 import className from "classnames";
 import sharedStyles from "styles/shared.module.scss";
 import styles from "./skills.module.scss";
-import Icon, { IconName } from "components/Icon";
-
-type Skill = {
-  name: string;
-  title?: string;
-  iconName: IconName;
-};
-
-type SkillsGroup = {
-  name: string;
-  skills: Skill[];
-};
+import Icon from "components/Icon";
+import { SkillsGroup } from "./Skills.types";
 
 type Props = {
   skillsGroups: SkillsGroup[];

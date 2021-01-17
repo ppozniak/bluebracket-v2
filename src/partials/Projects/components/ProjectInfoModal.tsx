@@ -43,6 +43,11 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
     stack,
   } = project;
 
+  const links = Object.entries({
+    "See live": liveUrl,
+    "View on GitHub": githubUrl,
+  }).filter(([, value]) => !!value);
+
   const table = Object.entries({
     "Period of time": timePeriod,
     Type: type,
@@ -78,30 +83,21 @@ const ProjectInfoModal = ({ isOpen = false, closeModal, project }: Props) => {
             <div className={sharedStyles.container}>
               <h3>{name}</h3>
 
-              {/* Links */}
-              {/* @TODO: DRY - links */}
-              <div className={styles.linksContainer}>
-                {liveUrl && (
-                  <a
-                    className={classNames(sharedStyles.linkOrange)}
-                    href={liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    See live <Icon name="external" />
-                  </a>
-                )}
-                {githubUrl && (
-                  <a
-                    className={classNames(sharedStyles.linkOrange)}
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on GitHub <Icon name="external" />
-                  </a>
-                )}
-              </div>
+              {!!links.length && (
+                <div className={styles.linksContainer}>
+                  {links.map(([text, url]) => (
+                    <a
+                      key={text}
+                      className={classNames(sharedStyles.linkOrange)}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {text} <Icon name="external" />
+                    </a>
+                  ))}
+                </div>
+              )}
 
               {/* Table */}
               {!!table.length && (

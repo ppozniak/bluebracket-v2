@@ -10,32 +10,9 @@ Modal.setAppElement("#___gatsby");
 import Landing from "partials/Landing";
 import Skills from "partials/Skills";
 import Projects from "partials/Projects";
+import { HomeData } from "core/home.types";
 
-export interface DataClass {
-  allContentfulAbout: AllContentfulAbout;
-  allContentfulSkills: any; // @TODO: Give types
-  allContentfulProject: any; // @TODO: ^
-}
-
-export interface AllContentfulAbout {
-  edges: Edge[];
-}
-
-export interface Edge {
-  node: Node;
-}
-
-export interface Node {
-  body: Body;
-  jobTitle: string;
-  greeting: string;
-}
-
-export interface Body {
-  body: string;
-}
-
-const IndexPage = ({ data }: { data: DataClass }) => {
+const IndexPage = ({ data }: { data: HomeData }) => {
   const {
     body: { body },
     greeting,
@@ -49,20 +26,7 @@ const IndexPage = ({ data }: { data: DataClass }) => {
       <title>Home Page</title>
       <Landing body={body} greeting={greeting} jobTitle={jobTitle} />
       <Skills skillsGroups={skills} />
-      <Projects
-        projects={[
-          ...projects,
-          {
-            name: "Leverage",
-            description:
-              "My first serious project in the career. Simple big website, which taught me a lot in a hurtful way.",
-            thumbnail: "image.png",
-            tags: ["react", "js"],
-            liveUrl: "https://bluebracket.net",
-            githubUrl: "https://bluebracket.net",
-          },
-        ]}
-      />
+      <Projects projects={projects} />
     </main>
   );
 };
