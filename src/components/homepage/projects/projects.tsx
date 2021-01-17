@@ -3,8 +3,8 @@ import { Project } from "types/projects.types";
 import styles from "./projects.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 import classNames from "classnames";
-import ProjectInfoModal from "./components/project-info-modal";
-import ProjectCard from "./components/project-card";
+import ProjectInfoModal from "./test-name/project-info-modal";
+import ProjectCard from "./test-name/project-card";
 
 type Props = {
   projects: Project[];
