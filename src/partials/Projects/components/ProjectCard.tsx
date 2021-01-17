@@ -1,6 +1,6 @@
 import React, { MouseEvent } from "react";
 import { Project, Category } from "../Projects.types";
-import { IconName } from "components/Icon";
+import { IconName } from "components/icon";
 import styles from "../Projects.module.scss";
 import ProjectTag from "./ProjectTag";
 import ProjectLink, { ViewInfoButton } from "./ProjectLink";

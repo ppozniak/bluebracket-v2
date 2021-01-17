@@ -1,6 +1,6 @@
 import React, { MouseEvent } from "react";
 import classNames from "classnames";
-import Icon from "components/Icon";
+import Icon from "components/icon";
 import Modal from "react-modal";
 import styles from "./ProjectInfoModal.module.scss";
 import sharedStyles from "styles/shared.module.scss";

@@ -2,7 +2,7 @@ import React from "react";
 import className from "classnames";
 import sharedStyles from "styles/shared.module.scss";
 import styles from "./skills.module.scss";
-import Icon from "components/Icon";
+import Icon from "components/icon";
 import { SkillsGroup } from "./Skills.types";
 
 type Props = {
