@@ -1,4 +1,3 @@
-const path = require("path");
 require("dotenv").config({
   path: `.env`,
 });
@@ -8,16 +7,6 @@ module.exports = {
     title: "bluebracket",
   },
   plugins: [
-    {
-      resolve: "gatsby-plugin-root-import",
-      options: {
-        assets: path.join(__dirname, "src/assets"),
-        components: path.join(__dirname, "src/components"),
-        pages: path.join(__dirname, "src/pages"),
-        styles: path.join(__dirname, "src/styles"),
-        type: path.join(__dirname, "src/types"),
-      },
-    },
     {
       resolve: "gatsby-plugin-svgr",
       options: {
