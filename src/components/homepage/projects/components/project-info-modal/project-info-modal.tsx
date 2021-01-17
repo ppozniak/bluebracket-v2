@@ -2,9 +2,9 @@ import React, { MouseEvent } from "react";
 import classNames from "classnames";
 import Icon from "components/icon";
 import Modal from "react-modal";
-import styles from "./ProjectInfoModal.module.scss";
+import styles from "./project-info-modal.module.scss";
 import sharedStyles from "styles/shared.module.scss";
-import { Project } from "../Projects.types";
+import { Project } from "types/projects.types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 
 type Props = {

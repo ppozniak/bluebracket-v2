@@ -1,7 +1,7 @@
-import { Project } from "partials/Projects/Projects.types";
-import { Skill } from "partials/Skills/Skills.types";
+import { Project } from "./projects.types";
+import { Skill } from "./skills.types";
 
-export interface HomeData {
+export interface HomePageData {
   allContentfulAbout: AllContentfulAbout;
   allContentfulSkills: AllContentfulSkills;
   allContentfulProject: AllContentfulProject;

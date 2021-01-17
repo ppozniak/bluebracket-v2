@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 import Icon, { IconName } from "components/icon";
-import styles from "../Projects.module.scss";
+import styles from "../projects.module.scss";
 import sharedStyles from "styles/shared.module.scss";
-import { Category } from "../Projects.types";
+import { Category } from "types/projects.types";
 
 const ProjectTag = ({
   iconName,

@@ -1,9 +1,9 @@
 import React, { MouseEvent } from "react";
-import { Project, Category } from "../Projects.types";
+import { Project, Category } from "../../../../../types/projects.types";
 import { IconName } from "components/icon";
-import styles from "../Projects.module.scss";
-import ProjectTag from "./ProjectTag";
-import ProjectLink, { ViewInfoButton } from "./ProjectLink";
+import styles from "../../projects.module.scss";
+import ProjectTag from "../project-tag";
+import ProjectLink, { ViewInfoButton } from "../project-link";
 
 const tagIconMapping: Record<Category, IconName> = {
   game: "pacman",

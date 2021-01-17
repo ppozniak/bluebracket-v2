@@ -1,7 +1,7 @@
 import React, { MouseEvent } from "react";
 import classNames from "classnames";
 import Icon, { IconName } from "components/icon";
-import styles from "../Projects.module.scss";
+import styles from "../projects.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 
 const ProjectLink = ({

@@ -3,7 +3,7 @@ import className from "classnames";
 import sharedStyles from "styles/shared.module.scss";
 import styles from "./skills.module.scss";
 import Icon from "components/icon";
-import { SkillsGroup } from "./Skills.types";
+import { SkillsGroup } from "types/skills.types";
 
 type Props = {
   skillsGroups: SkillsGroup[];

@@ -3,16 +3,16 @@ import { graphql } from "gatsby";
 import "@fontsource/ubuntu";
 import "styles/global.scss";
 import Modal from "react-modal";
+import { HomePageData } from "types/homepage.types";
 
 // http://reactcommunity.org/react-modal/accessibility/#app-element
 Modal.setAppElement("#___gatsby");
 
-import Landing from "partials/Landing";
-import Skills from "partials/Skills";
-import Projects from "partials/Projects";
-import { HomeData } from "core/home.types";
+import Landing from "components/homepage/landing";
+import Skills from "components/homepage/skills";
+import Projects from "components/homepage/projects";
 
-const IndexPage = ({ data }: { data: HomeData }) => {
+const IndexPage = ({ data }: { data: HomePageData }) => {
   const {
     body: { body },
     greeting,

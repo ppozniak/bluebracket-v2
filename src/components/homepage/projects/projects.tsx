@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Project } from "./Projects.types";
-import styles from "./Projects.module.scss";
+import { Project } from "types/projects.types";
+import styles from "./projects.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 import classNames from "classnames";
-import ProjectInfoModal from "./components/ProjectInfoModal";
-import ProjectCard from "./components/ProjectCard";
+import ProjectInfoModal from "./components/project-info-modal";
+import ProjectCard from "./components/project-card";
 
 type Props = {
   projects: Project[];
