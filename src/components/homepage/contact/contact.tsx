@@ -3,6 +3,10 @@ import React from "react";
 import styles from "./contact.module.scss";
 import sharedStyles from "styles/shared.module.scss";
 import classNames from "classnames";
+import { useForm } from "react-hook-form";
+
+// https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 type SocialLink = {
   text: string;
@@ -44,7 +48,34 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+type ErrorMessageProps = {
+  text: string;
+  htmlFor: string;
+  condition: boolean;
+};
+
+const ErrorMessage = ({ text, htmlFor, condition }: ErrorMessageProps) => (
+  <label
+    htmlFor={htmlFor}
+    className={classNames(styles.errorMessage, { [styles.visible]: condition })}
+    aria-hidden={!condition}
+  >
+    {text}
+  </label>
+);
+
+type ContactFormInterface = {
+  email: string;
+  subject: string;
+  message: string;
+};
+
 const Contact = () => {
+  const { register, handleSubmit, errors } = useForm<ContactFormInterface>();
+  const onSubmit = (values: ContactFormInterface) => {
+    console.log(values);
+  };
+
   return (
     <section
       className={classNames(styles.contact, sharedStyles.section)}
@@ -62,11 +93,12 @@ const Contact = () => {
             <br /> Use the form below or mail me directly at{" "}
             <a href="mailto:ppozniak95@gmail.com">ppozniak95@gmail.com</a>
           </p>
-          {/* @TODO: JS validation */}
-          {/* @TODO: Gatsby send email */}
           <form
+            className={styles.form}
+            onSubmit={handleSubmit(onSubmit)}
             action="https://formspree.io/ppozniak95@gmail.com"
             method="POST"
+            noValidate
           >
             <fieldset>
               <legend className={sharedStyles.srOnly}>Form contents</legend>
@@ -75,26 +107,43 @@ const Contact = () => {
                   Email
                 </label>
                 <input
-                  className={styles.formInput}
+                  ref={register({ required: true, pattern: emailRegex })}
+                  className={classNames(styles.formInput, {
+                    [styles.inputError]: errors.email,
+                  })}
                   required
                   placeholder="frontendex@coolio.com"
                   type="email"
                   autoComplete="email"
-                  name="_replyto"
+                  name="email"
                   id="email"
                 />
+                <ErrorMessage
+                  text="Be sure to provide real email address so I can contact you"
+                  condition={!!errors.email}
+                  htmlFor="email"
+                />
               </div>
+
               <div className={styles.formField}>
                 <label className={styles.formLabel} htmlFor="subject">
                   Subject
                 </label>
                 <input
-                  className={styles.formInput}
+                  ref={register({ required: true, minLength: 3 })}
+                  className={classNames(styles.formInput, {
+                    [styles.inputError]: errors.subject,
+                  })}
                   required
                   placeholder="Job offer - Senior Frontend Ninja Tank Mage (mooTools + wordpress)"
                   type="text"
-                  name="_subject"
+                  name="subject"
                   id="subject"
+                />
+                <ErrorMessage
+                  text="Please give me some subject :("
+                  condition={!!errors.subject}
+                  htmlFor="subject"
                 />
               </div>
               <div className={styles.formField}>
@@ -102,14 +151,21 @@ const Contact = () => {
                   Message
                 </label>
                 <textarea
+                  ref={register({ required: true, minLength: 12 })}
                   id="message"
-                  className={classNames(styles.formInput, styles.formTextarea)}
+                  className={classNames(styles.formInput, styles.formTextarea, {
+                    [styles.inputError]: errors.message,
+                  })}
                   required
                   placeholder="Hey man, we need you in our team please join us we have free ping-pong table and stuff and we give money for work so yeah, please. P.S you're quite handsome."
                   name="message"
                 ></textarea>
+                <ErrorMessage
+                  text="Write something, please"
+                  condition={!!errors.message}
+                  htmlFor="message"
+                />
               </div>
-              {/* @TODO: Pull right \/ */}
               <button
                 type="submit"
                 className={classNames(styles.submit, sharedStyles.btn)}

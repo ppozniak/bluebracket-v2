@@ -32,8 +32,12 @@
   }
 }
 
+.form {
+  margin-top: 1rem;
+}
+
 .form-field {
-  margin: 1rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .form-label {
@@ -46,20 +50,40 @@
 .form-input {
   background-color: $gray--l;
   border: 0;
+  border-left: 0 solid transparent;
   border-radius: 0 6px 6px 0;
   display: block;
   padding: 0.45rem;
   resize: vertical;
+  transition: 0.25s ease-in-out;
+  transition-property: box-shadow, border-left;
   width: 100%;
 
   &:focus {
     background-color: #fff;
-    box-shadow: 0 0 4px 4px $blue;
+    box-shadow: 1px 1px 3px 2px $blue;
     outline: none;
   }
 
   &::placeholder {
     opacity: 0.4;
+  }
+
+  &.input-error {
+    border-left: 5px solid $darkorange;
+    box-shadow: 1px 1px 3px 2px $darkorange;
+  }
+}
+
+.error-message {
+  color: $darkorange;
+  font-size: 0.8rem;
+  font-weight: 100;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+
+  &.visible {
+    opacity: 1;
   }
 }
 
