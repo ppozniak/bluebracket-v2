@@ -57,7 +57,7 @@ $padding: 1.3rem;
   position: fixed;
   right: 0.5rem;
   top: 0.5rem;
-  transition: 0.25s ease;
+  transition: 0.25s color ease;
   width: $size;
   @include from-desktop() {
     border-radius: 50%;

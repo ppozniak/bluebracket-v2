@@ -1,0 +1,215 @@
+@import 'helpers';
+
+.contact {
+  background: $pastel--d url('./assets/message.svg') no-repeat bottom center/100%;
+  box-shadow: 0 12px 14px 3px rgba(#000, 0.2);
+  color: $gray--l;
+  min-height: 70vh;
+  @include from-portrait() {
+    background-position: 45% 105%;
+    background-size: 50%;
+  }
+  @include from-desktop() {
+    background-position: 95% 115%;
+    background-size: 35%;
+  }
+
+  fieldset { 
+    border: 0;
+    padding: 0; 
+  }
+}
+
+.container {
+  @include from-desktop {
+    display: flex;
+  }
+}
+
+.contact-form-section {
+  @include from-desktop {
+    flex-basis: 66%;
+  }
+}
+
+.form-field {
+  margin: 1rem 0;
+}
+
+.form-label {
+  color: $gray;
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.form-input {
+  background-color: $gray--l;
+  border: 0;
+  border-radius: 0 6px 6px 0;
+  display: block;
+  padding: 0.45rem;
+  resize: vertical;
+  width: 100%;
+
+  &:focus {
+    background-color: #fff;
+    box-shadow: 0 0 4px 4px $blue;
+    outline: none;
+  }
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+}
+
+.form-textarea {
+  min-height: 9rem;
+  @include from-portrait() {
+    min-height: 20rem;
+  }
+}
+
+.submit {
+  margin-left: auto;
+}
+
+.socials {
+  margin-top: 1.2rem;
+  text-align: center;
+  @include from-desktop() {
+    flex-basis: 34%;
+    margin-top: 0;
+    padding-left: 4.5%;
+    text-align: left;
+  }
+}
+
+.socials-list {
+  @extend %list-reset;
+  font-size: 2rem;
+  margin-top: 0.3rem;
+  @include from-desktop() { font-size: 1.5rem; }
+}
+
+.socials-item {
+  display: inline-block;
+  margin: 0.3rem;
+  @include from-desktop() { display: block; }
+}
+
+.socials-link {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  min-width: 3.75rem;
+  padding: 0.9rem;
+  @include from-desktop() {
+    border-radius: 0;
+    height: 3.5rem;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    padding: 0;
+    
+    &:hover,
+    &:focus {
+      .socials-icon {
+        width: 4.8rem;
+      }
+    }
+  }
+}
+
+.socials-icon {
+  @include from-desktop() {
+    display: inline-block;
+    height: 100%;
+    margin-right: 1rem;
+    padding: 1rem;
+    text-align: center;
+    transition: width 0.25s ease-out;
+    width: 4rem;
+  }
+}
+
+.socials-title {
+  display: none;
+  @include from-desktop() { display: inline; }
+}
+
+// Colors
+.facebook {
+  background-color: #3b5998;
+  color: #f7f7f7;
+  @include from-desktop() {
+    .socials-icon {
+      background-color: $overlay;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #f7f7f7;
+  }
+}
+
+.linkedin {
+  background-color: #1583ba;
+  color: #fff;
+  @include from-desktop() {
+    .socials-icon {
+      background-color: $overlay;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+}
+
+.github {
+  background-color: #fff;
+  color: #000;
+  @include from-desktop() {
+    .socials-icon {
+      background-color: $overlay;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #000;
+  }
+}
+
+.codepen {
+  background-color: #000;
+  color: #fff;
+  @include from-desktop() {
+    .socials-icon {
+      background-color: rgba(#fff, 0.1);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+}
+
+.lastfm {
+  background-color: #b90000;
+  color: #fff;
+  @include from-desktop() {
+    .socials-icon {
+      background-color: $overlay;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+  }
+}

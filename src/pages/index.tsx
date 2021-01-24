@@ -11,6 +11,7 @@ Modal.setAppElement("#___gatsby");
 import Landing from "components/homepage/landing";
 import Skills from "components/homepage/skills";
 import Projects from "components/homepage/projects";
+import Contact from "components/homepage/contact";
 
 const IndexPage = ({ data }: { data: HomePageData }) => {
   const {
@@ -27,6 +28,7 @@ const IndexPage = ({ data }: { data: HomePageData }) => {
       <Landing body={body} greeting={greeting} jobTitle={jobTitle} />
       <Skills skillsGroups={skills} />
       <Projects projects={projects} />
+      <Contact />
     </main>
   );
 };

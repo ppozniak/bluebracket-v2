@@ -108,7 +108,7 @@
   display: block;
   padding: 0.5rem 1.2rem;
   text-align: center;
-  transition-duration: 0.45s;
+  transition: 0.45s background-color ease-out;
 
 
   &:hover,
