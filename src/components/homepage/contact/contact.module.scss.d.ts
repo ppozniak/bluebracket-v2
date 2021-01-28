@@ -10,6 +10,8 @@ export const inputError: string;
 export const errorMessage: string;
 export const visible: string;
 export const formTextarea: string;
+export const formFooter: string;
+export const formSentMessage: string;
 export const submit: string;
 export const socials: string;
 export const socialsItem: string;

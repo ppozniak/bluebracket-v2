@@ -1,9 +1,9 @@
-import Icon, { IconName } from "components/icon";
-import React from "react";
-import styles from "./contact.module.scss";
-import sharedStyles from "styles/shared.module.scss";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
+import Icon, { IconName } from "components/icon";
+import sharedStyles from "styles/shared.module.scss";
+import styles from "./contact.module.scss";
 
 // https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
@@ -71,9 +71,40 @@ type ContactFormInterface = {
 };
 
 const Contact = () => {
-  const { register, handleSubmit, errors } = useForm<ContactFormInterface>();
-  const onSubmit = (values: ContactFormInterface) => {
-    console.log(values);
+  const {
+    register,
+    handleSubmit,
+    errors,
+    reset,
+  } = useForm<ContactFormInterface>();
+  const [sendingForm, setSendingForm] = useState<boolean>(false);
+  const [sendingFormMessage, setSendingFormMessage] = useState<string>();
+
+  const onSubmit = async (values: ContactFormInterface) => {
+    const query = new URLSearchParams();
+    Object.entries(values).forEach(([key, value]) => {
+      query.append(key, value);
+    });
+
+    setSendingForm(true);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: query.toString(),
+    })
+      .then(() => {
+        setSendingFormMessage(
+          "Thanks for the message! I'll answer you if you're not a bot :)"
+        );
+        reset();
+      })
+      .catch((error) => {
+        console.log(error);
+        setSendingFormMessage("Something went wrong. Sorry! Try again later.");
+      })
+      .finally(() => {
+        setSendingForm(false);
+      });
   };
 
   return (
@@ -96,11 +127,19 @@ const Contact = () => {
           <form
             className={styles.form}
             onSubmit={handleSubmit(onSubmit)}
-            action="https://formspree.io/ppozniak95@gmail.com"
             method="POST"
             noValidate
+            data-netlify="true"
+            name="contact"
+            netlify-honeypot="hooman-validate"
           >
             <fieldset>
+              <input
+                name="hooman-validate"
+                ref={register()}
+                style={{ display: "none" }}
+                disabled={sendingForm}
+              />
               <legend className={sharedStyles.srOnly}>Form contents</legend>
               <div className={styles.formField}>
                 <label className={styles.formLabel} htmlFor="email">
@@ -117,9 +156,10 @@ const Contact = () => {
                   autoComplete="email"
                   name="email"
                   id="email"
+                  disabled={sendingForm}
                 />
                 <ErrorMessage
-                  text="Be sure to provide real email address so I can contact you"
+                  text="Real email address please"
                   condition={!!errors.email}
                   htmlFor="email"
                 />
@@ -139,6 +179,7 @@ const Contact = () => {
                   type="text"
                   name="subject"
                   id="subject"
+                  disabled={sendingForm}
                 />
                 <ErrorMessage
                   text="Please give me some subject :("
@@ -159,6 +200,7 @@ const Contact = () => {
                   required
                   placeholder="Hey man, we need you in our team please join us we have free ping-pong table and stuff and we give money for work so yeah, please. P.S you're quite handsome."
                   name="message"
+                  disabled={sendingForm}
                 ></textarea>
                 <ErrorMessage
                   text="Write something, please"
@@ -166,12 +208,19 @@ const Contact = () => {
                   htmlFor="message"
                 />
               </div>
-              <button
-                type="submit"
-                className={classNames(styles.submit, sharedStyles.btn)}
-              >
-                Submit
-              </button>
+
+              <footer className={styles.formFooter}>
+                <span className={styles.formSentMessage}>
+                  {sendingFormMessage}
+                </span>
+                <button
+                  type="submit"
+                  className={classNames(styles.submit, sharedStyles.btn)}
+                  disabled={sendingForm}
+                >
+                  Submit
+                </button>
+              </footer>
             </fieldset>
           </form>
         </div>

@@ -6,6 +6,7 @@ $base-font: 16px;
 
 $mobile: em(599px);
 $portrait: em(600px);
+$tablet: em(730px);
 $landscape: em(900px);
 $desktop: em(1200px);
 $desktop-wide: em(1800px);
@@ -18,6 +19,9 @@ $desktop-wide: em(1800px);
   @media (min-width: $portrait) { @content; }
 }
 
+@mixin from-tablet() {
+  @media (min-width: $tablet) { @content; }
+}
 @mixin from-landscape() {
   @media (min-width: $landscape) { @content; }
 }
