@@ -83,7 +83,7 @@ const Contact = () => {
   const onSubmit = async (values: ContactFormInterface) => {
     const query = new URLSearchParams();
     Object.entries(values).forEach(([key, value]) => {
-      query.append(key, value);
+      if (!!value) query.append(key, value);
     });
 
     setSendingForm(true);
@@ -92,10 +92,14 @@ const Contact = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: query.toString(),
     })
-      .then(() => {
-        setSendingFormMessage(
-          "Thanks for the message! I'll answer you if you're not a bot :)"
-        );
+      .then((res) => {
+        if (res.ok) {
+          setSendingFormMessage(
+            "Thanks for the message! I'll answer you if you're not a bot :)"
+          );
+        } else {
+          throw new Error(res.statusText);
+        }
         reset();
       })
       .catch((error) => {
