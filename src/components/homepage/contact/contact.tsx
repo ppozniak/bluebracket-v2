@@ -87,7 +87,12 @@ const Contact = () => {
   const [sendingFormMessage, setSendingFormMessage] = useState<string>();
 
   const onSubmit = async (values: ContactFormInterface) => {
-    const query = encode({ "form-name": "contact", ...values });
+    const query = new URLSearchParams();
+    Object.entries(values).forEach(([key, value]) => {
+      query.append(key, value);
+    });
+
+    query.append("form-name", "contact");
 
     setSendingForm(true);
     fetch("/", {
@@ -95,14 +100,10 @@ const Contact = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: query.toString(),
     })
-      .then((res) => {
-        if (res.ok) {
-          setSendingFormMessage(
-            "Thanks for the message! I'll answer you if you're not a bot :)"
-          );
-        } else {
-          throw new Error(res.statusText);
-        }
+      .then(() => {
+        setSendingFormMessage(
+          "Thanks for the message! I'll answer you if you're not a bot :)"
+        );
         reset();
       })
       .catch((error) => {
