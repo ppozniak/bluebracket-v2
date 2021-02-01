@@ -8,6 +8,12 @@ import styles from "./contact.module.scss";
 // https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
+const encode = (data: Record<string, string>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 type SocialLink = {
   text: string;
   link: string;
@@ -81,10 +87,7 @@ const Contact = () => {
   const [sendingFormMessage, setSendingFormMessage] = useState<string>();
 
   const onSubmit = async (values: ContactFormInterface) => {
-    const query = new URLSearchParams();
-    Object.entries(values).forEach(([key, value]) => {
-      if (!!value) query.append(key, value);
-    });
+    const query = encode({ "form-name": "contact", ...values });
 
     setSendingForm(true);
     fetch("/", {
