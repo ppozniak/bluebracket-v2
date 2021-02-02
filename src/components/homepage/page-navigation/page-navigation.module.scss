@@ -1,0 +1,92 @@
+@import 'helpers';
+
+$detail: rgba(#000, 0.25);
+$active: $darkpastel;
+$background: $gray;
+$font: $darkpastel;
+$font-active: $darkpastel;
+
+.page-nav {
+  z-index: 10;
+}
+
+// @TODO:
+// .scroll-past-nav .main-nav {
+//   left: 0;
+//   position: fixed;
+//   right: 0;
+//   top: 0;
+
+//   .nav-a {
+//     background-color: rgba($background, 0.85);
+//   }
+// }
+
+.list {
+  @extend %list-reset;
+  display: flex;
+}
+
+.item {
+  flex: 1;
+  position: relative;
+  // Vertical divider
+  &:not(:last-child)::after {
+    background-color: $detail;
+    bottom: 7.5%;
+    content: '';
+    display: block;
+    height: 85%;
+    position: absolute;
+    right: -1px;
+    width: 1px;
+    z-index: 1;
+  }
+}
+
+.link {
+  align-items: center;
+  background-color: $background;
+  box-shadow: 1px 1px 3px rgba(#000, 0.2);
+  color: $font;
+  display: flex;
+  font-size: 0.75em;
+  height: 100%;
+  justify-content: center;
+  padding: 0.45rem 0;
+  position: relative;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+
+  // Bottom border
+  &::after {
+    background-color: $detail;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transition: width 0.3s ease-in-out;
+    width: 0;
+  }
+
+  &:hover,
+  &.is-active, // @TODO: is active
+  &:focus {
+    background-color: $background !important;
+    color: $font-active;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.icon {
+  margin-right: 4px;
+  @include to-mobile() {
+    display: none;
+  }
+}

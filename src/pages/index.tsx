@@ -9,10 +9,35 @@ import { HomePageData } from "types/homepage.types";
 Modal.setAppElement("#___gatsby");
 
 import Landing from "components/homepage/landing";
+import PageNavigation from "components/homepage/page-navigation";
 import Skills from "components/homepage/skills";
 import Projects from "components/homepage/projects";
 import Contact from "components/homepage/contact";
 import Footer from "components/homepage/footer";
+import { Section } from "components/homepage/page-navigation/page-navigation";
+
+const sections: Section[] = [
+  {
+    name: "About",
+    id: "about",
+    iconName: "person",
+  },
+  {
+    name: "Skills",
+    id: "skills",
+    iconName: "statsBars",
+  },
+  {
+    name: "Portfolio",
+    id: "portfolio",
+    iconName: "work",
+  },
+  {
+    name: "Contact",
+    id: "contact",
+    iconName: "envelope",
+  },
+];
 
 const IndexPage = ({ data }: { data: HomePageData }) => {
   const {
@@ -27,6 +52,7 @@ const IndexPage = ({ data }: { data: HomePageData }) => {
     <main>
       <title>Home Page</title>
       <Landing body={body} greeting={greeting} jobTitle={jobTitle} />
+      <PageNavigation sections={sections} />
       <Skills skillsGroups={skills} />
       <Projects projects={projects} />
       <Contact />
