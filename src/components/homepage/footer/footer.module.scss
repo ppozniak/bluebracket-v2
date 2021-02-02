@@ -1,0 +1,27 @@
+@import 'helpers';
+
+.footer {
+  background-color: $almostblack;
+  font-size: 0.75rem;
+  font-weight: 100;
+  padding: 2rem 0 2rem 2rem;
+  position: relative;
+  
+  @include from-landscape {
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.bracket::before {
+  bottom: 50%;
+  color: $blue;
+  content: '}';
+  font-size: 4.5rem;
+  left: 5%;
+  position: absolute;
+  transform: translateY(50%);
+}

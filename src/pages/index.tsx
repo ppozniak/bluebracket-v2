@@ -12,6 +12,7 @@ import Landing from "components/homepage/landing";
 import Skills from "components/homepage/skills";
 import Projects from "components/homepage/projects";
 import Contact from "components/homepage/contact";
+import Footer from "components/homepage/footer";
 
 const IndexPage = ({ data }: { data: HomePageData }) => {
   const {
@@ -29,6 +30,7 @@ const IndexPage = ({ data }: { data: HomePageData }) => {
       <Skills skillsGroups={skills} />
       <Projects projects={projects} />
       <Contact />
+      <Footer />
     </main>
   );
 };
